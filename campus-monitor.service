@@ -1,0 +1,20 @@
+# Servicio systemd para correr el monitor 24/7 en un VPS Linux.
+# Copiar a /etc/systemd/system/campus-monitor.service
+# Cambiar TU_USUARIO por tu usuario del VPS.
+
+[Unit]
+Description=Monitor Campus UTN FRM -> Telegram
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=TU_USUARIO
+WorkingDirectory=/home/TU_USUARIO/campus-monitor
+ExecStart=/home/TU_USUARIO/campus-monitor/venv/bin/python campus_monitor.py
+Environment=PYTHONUNBUFFERED=1
+Environment=TZ=America/Argentina/Mendoza
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

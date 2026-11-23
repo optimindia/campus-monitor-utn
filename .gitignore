@@ -1,0 +1,10 @@
+# Datos privados: NUNCA subir
+.env
+estado.json
+monitor.log
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
